@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>Backbone.js デモ</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="./js/lib/json2.js"></script>
+	<script src="./js/lib/jquery.js"></script>
+	<script src="./js/lib/underscore.js"></script>
+	<script src="./js/lib/backbone.js"></script>
+	<script src="./js/lib/backbone.localStorage.js"></script>
+	<script src="./js/todo.js"></script>
+	<script src="./js/todolist.js"></script>
+	<script src="./js/todoview.js"></script>
+	<script src="./js/appview.js"></script>
+	<script src="./js/main.js"></script>
+	<script type="text/template" id="item-template">
+		<div class="view">
+			<input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+			<label><%- title %></label>
+			<a class="destroy"></a>
+		</div>
+		<input class="edit" type="text" value="<%- title %>" />
+	</script>
+	<script type="text/template" id="stats-template">
+		<% if (done) { %>
+			<a id="clear-completed">チェックが付いているタスク <%= done %> 件を削除する</a>
+		<% } %>
+		<div class="todo-count">残り <b><%= remaining %></b> 件</div>
+	</script>
+</head>
+
+<body>
+<div id="todoapp">
+	<header>
+		<h1>タスクリスト</h1>
+		<input id="new-todo" type="text" placeholder="やるべきタスクは？" spellcheck="false">
+	</header>
+
+	<section id="main" style="display: none;">
+		<input id="toggle-all" type="checkbox">
+		<label for="toggle-all">全て完了にする</label>
+		<ul id="todo-list"></ul>
+	</section>
+
+	<footer style="display: none;">
+		<a id="clear-completed">チェックが付いているタスク 1 件を削除する</a>
+		<div class="todo-count">残り<b>0</b>件</div>
+	</footer>
+</div>
+<div id="instructions">タスク名をダブルクリックすると編集できます。</div>
+
+</body>
+</html>
